@@ -7,7 +7,11 @@ export const Route = createFileRoute("/risco")({
   head: () => ({
     meta: [
       { title: "Motor de Risco IA — PNGI" },
-      { name: "description", content: "Indicadores de risco e recomendações de fiscalização orientadas por inteligência artificial." },
+      {
+        name: "description",
+        content:
+          "Indicadores de risco e recomendações de fiscalização orientadas por inteligência artificial.",
+      },
     ],
   }),
   component: RiscoPage,
@@ -23,16 +27,38 @@ function RiscoPage() {
     <DashboardLayout>
       <header>
         <div className="text-sm font-medium text-gov-blue mb-1">Inteligência Artificial</div>
-        <h2 className="font-display text-3xl font-bold tracking-tight">Motor Inteligente de Risco</h2>
+        <h2 className="font-display text-3xl font-bold tracking-tight">
+          Motor Inteligente de Risco
+        </h2>
         <p className="text-sm text-slate-500 mt-1 max-w-3xl">
-          Produz indicadores de risco e recomenda prioridades de acompanhamento, monitoramento e fiscalização com base em padrões históricos, dados contextuais e informações de integridade.
+          Produz indicadores de risco e recomenda prioridades de acompanhamento, monitoramento e
+          fiscalização com base em padrões históricos, dados contextuais e informações de
+          integridade.
         </p>
       </header>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <RiskBucket label="Risco Alto" count={high} tone="alto" desc="Atuação prioritária recomendada." icon={<Target className="size-4" />} />
-        <RiskBucket label="Risco Médio" count={mid} tone="medio" desc="Monitoramento intensivo sugerido." icon={<TrendingUp className="size-4" />} />
-        <RiskBucket label="Risco Baixo" count={low} tone="baixo" desc="Acompanhamento de rotina." icon={<Brain className="size-4" />} />
+        <RiskBucket
+          label="Risco Alto"
+          count={high}
+          tone="alto"
+          desc="Atuação prioritária recomendada."
+          icon={<Target className="size-4" />}
+        />
+        <RiskBucket
+          label="Risco Médio"
+          count={mid}
+          tone="medio"
+          desc="Monitoramento intensivo sugerido."
+          icon={<TrendingUp className="size-4" />}
+        />
+        <RiskBucket
+          label="Risco Baixo"
+          count={low}
+          tone="baixo"
+          desc="Acompanhamento de rotina."
+          icon={<Brain className="size-4" />}
+        />
       </div>
 
       <div className="grid grid-cols-1 xl:grid-cols-3 gap-8">
@@ -58,13 +84,21 @@ function RiscoPage() {
                     <td className="px-6 py-4">
                       <div className="flex items-center gap-2">
                         <div className="h-2 w-16 bg-slate-100 rounded-full overflow-hidden">
-                          <div className={"h-full " + riskBar(i.riskLevel)} style={{ width: `${i.riskScore * 10}%` }} />
+                          <div
+                            className={"h-full " + riskBar(i.riskLevel)}
+                            style={{ width: `${i.riskScore * 10}%` }}
+                          />
                         </div>
                         <span className="font-bold text-sm">{i.riskScore.toFixed(1)}</span>
                       </div>
                     </td>
                     <td className="px-6 py-4">
-                      <span className={"px-2 py-1 rounded-full text-[10px] font-bold uppercase " + riskBadge(i.riskLevel)}>
+                      <span
+                        className={
+                          "px-2 py-1 rounded-full text-[10px] font-bold uppercase " +
+                          riskBadge(i.riskLevel)
+                        }
+                      >
                         {i.riskLabel}
                       </span>
                     </td>
@@ -72,8 +106,8 @@ function RiscoPage() {
                       {i.riskLevel === "alto"
                         ? "Abrir diligência preventiva e solicitar regularização tempestiva."
                         : i.riskLevel === "medio"
-                        ? "Notificar gestor e exigir plano de adequação."
-                        : "Manter acompanhamento de rotina."}
+                          ? "Notificar gestor e exigir plano de adequação."
+                          : "Manter acompanhamento de rotina."}
                     </td>
                   </tr>
                 ))}
@@ -92,9 +126,13 @@ function RiscoPage() {
             <Signal label="Indicadores financeiros" weight={12} />
           </div>
           <div className="bg-gov-navy text-white rounded-2xl p-5 shadow-xl">
-            <div className="text-[10px] uppercase tracking-widest text-slate-400 mb-2 font-bold">Aprendizado contínuo</div>
+            <div className="text-[10px] uppercase tracking-widest text-slate-400 mb-2 font-bold">
+              Aprendizado contínuo
+            </div>
             <p className="text-sm leading-relaxed">
-              O motor reaprende a cada ciclo, incorporando regularizações e novos eventos sancionadores. Versão atual treinada em <strong className="font-mono">427.812</strong> eventos.
+              O motor reaprende a cada ciclo, incorporando regularizações e novos eventos
+              sancionadores. Versão atual treinada em <strong className="font-mono">427.812</strong>{" "}
+              eventos.
             </p>
           </div>
         </aside>
@@ -103,11 +141,25 @@ function RiscoPage() {
   );
 }
 
-function RiskBucket({ label, count, tone, desc, icon }: { label: string; count: number; tone: "alto" | "medio" | "baixo"; desc: string; icon: React.ReactNode }) {
+function RiskBucket({
+  label,
+  count,
+  tone,
+  desc,
+  icon,
+}: {
+  label: string;
+  count: number;
+  tone: "alto" | "medio" | "baixo";
+  desc: string;
+  icon: React.ReactNode;
+}) {
   const toneClass =
-    tone === "alto" ? "border-rose-200 bg-rose-50/40" :
-    tone === "medio" ? "border-amber-200 bg-amber-50/40" :
-    "border-emerald-200 bg-emerald-50/40";
+    tone === "alto"
+      ? "border-rose-200 bg-rose-50/40"
+      : tone === "medio"
+        ? "border-amber-200 bg-amber-50/40"
+        : "border-emerald-200 bg-emerald-50/40";
   const valClass =
     tone === "alto" ? "text-risk-high" : tone === "medio" ? "text-risk-mid" : "text-risk-low";
   return (

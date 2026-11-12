@@ -7,7 +7,11 @@ export const Route = createFileRoute("/instrumentos")({
   head: () => ({
     meta: [
       { title: "Instrumentos de Cooperação — PNGI" },
-      { name: "description", content: "Cadastro único de acordos, convênios e parcerias com histórico de integridade e conformidade." },
+      {
+        name: "description",
+        content:
+          "Cadastro único de acordos, convênios e parcerias com histórico de integridade e conformidade.",
+      },
     ],
   }),
   component: InstrumentosPage,
@@ -19,9 +23,12 @@ function InstrumentosPage() {
       <header className="flex items-end justify-between flex-wrap gap-4">
         <div>
           <div className="text-sm font-medium text-gov-blue mb-1">Dados Estruturados</div>
-          <h2 className="font-display text-3xl font-bold tracking-tight">Instrumentos de Cooperação</h2>
+          <h2 className="font-display text-3xl font-bold tracking-tight">
+            Instrumentos de Cooperação
+          </h2>
           <p className="text-sm text-slate-500 mt-1">
-            Cadastro único de instrumentos com ciclo de vida padronizado, marcos e critérios objetivos.
+            Cadastro único de instrumentos com ciclo de vida padronizado, marcos e critérios
+            objetivos.
           </p>
         </div>
         <button className="px-4 py-2 text-sm font-semibold bg-gov-navy text-white rounded-lg hover:bg-slate-800 transition-colors inline-flex items-center gap-2">
@@ -71,7 +78,17 @@ function InstrumentosPage() {
                 <td className="px-6 py-4">
                   <div className="flex items-center gap-2">
                     <div className="h-1.5 w-16 bg-slate-100 rounded-full overflow-hidden">
-                      <div className={"h-full " + (i.compliance >= 80 ? "bg-risk-low" : i.compliance >= 60 ? "bg-risk-mid" : "bg-risk-high")} style={{ width: `${i.compliance}%` }} />
+                      <div
+                        className={
+                          "h-full " +
+                          (i.compliance >= 80
+                            ? "bg-risk-low"
+                            : i.compliance >= 60
+                              ? "bg-risk-mid"
+                              : "bg-risk-high")
+                        }
+                        style={{ width: `${i.compliance}%` }}
+                      />
                     </div>
                     <span className="text-xs text-slate-500 font-medium">{i.compliance}%</span>
                   </div>
@@ -85,12 +102,18 @@ function InstrumentosPage() {
                   </div>
                 </td>
                 <td className="px-6 py-4">
-                  <span className={"px-2 py-1 rounded-full text-[10px] font-bold uppercase " +
-                    (i.status === "Vigente" ? "bg-emerald-50 text-emerald-600" :
-                     i.status === "Em análise" ? "bg-amber-50 text-amber-600" :
-                     i.status === "Suspenso" ? "bg-rose-50 text-rose-600" :
-                     "bg-slate-100 text-slate-500")
-                  }>
+                  <span
+                    className={
+                      "px-2 py-1 rounded-full text-[10px] font-bold uppercase " +
+                      (i.status === "Vigente"
+                        ? "bg-emerald-50 text-emerald-600"
+                        : i.status === "Em análise"
+                          ? "bg-amber-50 text-amber-600"
+                          : i.status === "Suspenso"
+                            ? "bg-rose-50 text-rose-600"
+                            : "bg-slate-100 text-slate-500")
+                    }
+                  >
                     {i.status}
                   </span>
                 </td>
@@ -105,9 +128,21 @@ function InstrumentosPage() {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <PhaseCard label="Padronização" desc="Fases, marcos e critérios objetivos aplicados a todos os instrumentos." badge="Metodologia" />
-        <PhaseCard label="Histórico de Integridade" desc="Sanções administrativas, CEIS, CNEP e certidões consolidadas por parceiro." badge="Conformidade" />
-        <PhaseCard label="Trilha de Auditoria" desc="Cada alteração registrada para apoio à fiscalização orientada por risco." badge="Governança" />
+        <PhaseCard
+          label="Padronização"
+          desc="Fases, marcos e critérios objetivos aplicados a todos os instrumentos."
+          badge="Metodologia"
+        />
+        <PhaseCard
+          label="Histórico de Integridade"
+          desc="Sanções administrativas, CEIS, CNEP e certidões consolidadas por parceiro."
+          badge="Conformidade"
+        />
+        <PhaseCard
+          label="Trilha de Auditoria"
+          desc="Cada alteração registrada para apoio à fiscalização orientada por risco."
+          badge="Governança"
+        />
       </div>
     </DashboardLayout>
   );
@@ -116,7 +151,9 @@ function InstrumentosPage() {
 function PhaseCard({ label, desc, badge }: { label: string; desc: string; badge: string }) {
   return (
     <div className="p-5 rounded-2xl bg-white border border-slate-200">
-      <div className="text-[10px] font-bold uppercase tracking-widest text-gov-blue mb-2">{badge}</div>
+      <div className="text-[10px] font-bold uppercase tracking-widest text-gov-blue mb-2">
+        {badge}
+      </div>
       <h4 className="font-display font-bold text-base mb-1">{label}</h4>
       <p className="text-xs text-slate-500 leading-relaxed">{desc}</p>
     </div>

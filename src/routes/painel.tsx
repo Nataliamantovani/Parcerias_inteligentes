@@ -18,7 +18,11 @@ export const Route = createFileRoute("/painel")({
   head: () => ({
     meta: [
       { title: "Painel Executivo — PNGI" },
-      { name: "description", content: "Indicadores estratégicos, alertas e instrumentos prioritários para a alta administração." },
+      {
+        name: "description",
+        content:
+          "Indicadores estratégicos, alertas e instrumentos prioritários para a alta administração.",
+      },
     ],
   }),
   component: Painel,
@@ -32,15 +36,25 @@ function Painel() {
     <DashboardLayout>
       <header className="flex items-end justify-between flex-wrap gap-4">
         <div>
-          <div className="text-xs font-bold uppercase tracking-widest text-gov-blue mb-2">Painel Executivo · Visão Estratégica</div>
-          <h2 className="font-display text-3xl font-bold tracking-tight">Governança em tempo real</h2>
+          <div className="text-xs font-bold uppercase tracking-widest text-gov-blue mb-2">
+            Painel Executivo · Visão Estratégica
+          </div>
+          <h2 className="font-display text-3xl font-bold tracking-tight">
+            Governança em tempo real
+          </h2>
           <p className="text-sm text-slate-500 mt-1 max-w-3xl">
-            Indicadores, alertas e prioridades para gestores e alta administração do SIGACT IA — INSS.
+            Indicadores, alertas e prioridades para gestores e alta administração do SIGACT IA —
+            INSS.
           </p>
         </div>
         <div className="flex gap-2">
-          <button className="px-4 py-2 text-sm font-semibold border border-slate-200 rounded-lg bg-white hover:bg-slate-50">Exportar relatório</button>
-          <Link to="/ideobaldo" className="px-4 py-2 text-sm font-semibold bg-gov-navy text-white rounded-lg hover:bg-slate-800 inline-flex items-center gap-2">
+          <button className="px-4 py-2 text-sm font-semibold border border-slate-200 rounded-lg bg-white hover:bg-slate-50">
+            Exportar relatório
+          </button>
+          <Link
+            to="/ideobaldo"
+            className="px-4 py-2 text-sm font-semibold bg-gov-navy text-white rounded-lg hover:bg-slate-800 inline-flex items-center gap-2"
+          >
             <Sparkles className="size-4" /> Perguntar ao Ideobaldo
           </Link>
         </div>
@@ -48,12 +62,42 @@ function Painel() {
 
       {/* KPI Cards */}
       <section className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4">
-        <Kpi label="Instrumentos Ativos" value="1.248" icon={<FileCheck2 className="size-4" />} tone="blue" />
-        <Kpi label="Em Monitoramento" value="124" icon={<Activity className="size-4" />} tone="emerald" />
-        <Kpi label="Vigência Crítica" value="42" icon={<CalendarClock className="size-4" />} tone="amber" />
-        <Kpi label="Fiscalizações em Andamento" value="38" icon={<ShieldCheck className="size-4" />} tone="blue" />
-        <Kpi label="Recomendações Emitidas" value="427" icon={<Sparkles className="size-4" />} tone="indigo" />
-        <Kpi label="Lições Registradas" value="86" icon={<BookOpen className="size-4" />} tone="slate" />
+        <Kpi
+          label="Instrumentos Ativos"
+          value="1.248"
+          icon={<FileCheck2 className="size-4" />}
+          tone="blue"
+        />
+        <Kpi
+          label="Em Monitoramento"
+          value="124"
+          icon={<Activity className="size-4" />}
+          tone="emerald"
+        />
+        <Kpi
+          label="Vigência Crítica"
+          value="42"
+          icon={<CalendarClock className="size-4" />}
+          tone="amber"
+        />
+        <Kpi
+          label="Fiscalizações em Andamento"
+          value="38"
+          icon={<ShieldCheck className="size-4" />}
+          tone="blue"
+        />
+        <Kpi
+          label="Recomendações Emitidas"
+          value="427"
+          icon={<Sparkles className="size-4" />}
+          tone="indigo"
+        />
+        <Kpi
+          label="Lições Registradas"
+          value="86"
+          icon={<BookOpen className="size-4" />}
+          tone="slate"
+        />
       </section>
 
       {/* Charts row */}
@@ -79,7 +123,10 @@ function Painel() {
             ].map((b) => (
               <div key={b.l} className="flex flex-col items-center flex-1">
                 <div className="text-xs font-mono text-slate-500 mb-1">{b.v}%</div>
-                <div className={"w-full rounded-t-md " + b.c} style={{ height: `${b.v * 1.4}px` }} />
+                <div
+                  className={"w-full rounded-t-md " + b.c}
+                  style={{ height: `${b.v * 1.4}px` }}
+                />
                 <div className="text-xs font-semibold text-slate-600 mt-2">{b.l}</div>
               </div>
             ))}
@@ -128,7 +175,10 @@ function Painel() {
           items={[
             { t: "Cláusulas de repasse mensal reduzem inconformidades", s: "Padrão recorrente" },
             { t: "Causa raiz: planos de trabalho sem indicadores", s: "Inconformidade típica" },
-            { t: "Diligência preventiva no 1º trimestre é mais eficaz", s: "Recomendação institucional" },
+            {
+              t: "Diligência preventiva no 1º trimestre é mais eficaz",
+              s: "Recomendação institucional",
+            },
           ]}
         />
         <Panel
@@ -137,7 +187,10 @@ function Painel() {
           icon={<Sparkles className="size-4" />}
           items={[
             { t: "Priorizar acompanhamento de 24 instrumentos no Q4", s: "Ação preventiva" },
-            { t: "Aplicar boa prática do ACT UnB em 6 acordos novos", s: "Oportunidade de melhoria" },
+            {
+              t: "Aplicar boa prática do ACT UnB em 6 acordos novos",
+              s: "Oportunidade de melhoria",
+            },
             { t: "Atualizar normativos referenciados em 12 termos", s: "Conformidade" },
           ]}
         />
@@ -146,8 +199,15 @@ function Painel() {
       {/* Top risks */}
       <section>
         <div className="flex items-center justify-between mb-3">
-          <h3 id="prioritarios" className="font-display text-xl font-bold">Instrumentos Prioritários</h3>
-          <Link to="/risco" className="text-xs font-medium px-2 py-1 bg-slate-100 rounded text-slate-600 hover:bg-slate-200">Ver priorização completa →</Link>
+          <h3 id="prioritarios" className="font-display text-xl font-bold">
+            Instrumentos Prioritários
+          </h3>
+          <Link
+            to="/risco"
+            className="text-xs font-medium px-2 py-1 bg-slate-100 rounded text-slate-600 hover:bg-slate-200"
+          >
+            Ver priorização completa →
+          </Link>
         </div>
         <div className="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm">
           <table className="w-full text-left text-sm">
@@ -163,24 +223,38 @@ function Painel() {
               {top.map((i) => (
                 <tr key={i.id} className="hover:bg-slate-50/60">
                   <td className="px-6 py-4">
-                    <div className="font-semibold">{i.id} — {i.partner}</div>
+                    <div className="font-semibold">
+                      {i.id} — {i.partner}
+                    </div>
                     <div className="text-xs text-slate-400">Vigência: {i.validity}</div>
                   </td>
                   <td className="px-6 py-4">
                     <div className="flex items-center gap-2">
                       <div className="h-2 w-20 bg-slate-100 rounded-full overflow-hidden">
-                        <div className={"h-full " + riskBar(i.riskLevel)} style={{ width: `${i.riskScore * 10}%` }} />
+                        <div
+                          className={"h-full " + riskBar(i.riskLevel)}
+                          style={{ width: `${i.riskScore * 10}%` }}
+                        />
                       </div>
-                      <span className="font-mono text-xs text-slate-500">{i.riskScore.toFixed(1)}</span>
+                      <span className="font-mono text-xs text-slate-500">
+                        {i.riskScore.toFixed(1)}
+                      </span>
                     </div>
                   </td>
                   <td className="px-6 py-4">
-                    <span className={"px-2 py-1 rounded-full text-[10px] font-bold uppercase " + riskBadge(i.riskLevel)}>
+                    <span
+                      className={
+                        "px-2 py-1 rounded-full text-[10px] font-bold uppercase " +
+                        riskBadge(i.riskLevel)
+                      }
+                    >
                       {i.riskLabel}
                     </span>
                   </td>
                   <td className="px-6 py-4 text-right">
-                    <Link to="/monitoramento" className="text-gov-blue font-medium hover:underline">Acompanhar</Link>
+                    <Link to="/monitoramento" className="text-gov-blue font-medium hover:underline">
+                      Acompanhar
+                    </Link>
                   </td>
                 </tr>
               ))}
@@ -192,13 +266,18 @@ function Painel() {
       <section id="resultados" className="grid grid-cols-1 md:grid-cols-3 gap-6">
         <Result k="32%" l="Redução de inconformidades documentais no último trimestre" />
         <Result k="86" l="Lições aprendidas catalogadas e disponíveis para reuso" />
-        <Result k="427" l="Recomendações geradas pela IA para fiscalização orientada por evidência" />
+        <Result
+          k="427"
+          l="Recomendações geradas pela IA para fiscalização orientada por evidência"
+        />
       </section>
 
       <section>
         <div className="bg-white border border-slate-200 rounded-2xl p-6">
           <div className="flex items-center justify-between mb-4">
-            <h4 className="text-sm font-bold uppercase tracking-widest text-slate-500">Ciclo de Vida dos Instrumentos</h4>
+            <h4 className="text-sm font-bold uppercase tracking-widest text-slate-500">
+              Ciclo de Vida dos Instrumentos
+            </h4>
             <span className="text-xs text-slate-400">{total.toLocaleString("pt-BR")} no ciclo</span>
           </div>
           <div className="grid md:grid-cols-5 gap-4">
@@ -206,7 +285,9 @@ function Painel() {
               const pct = Math.round((p.count / total) * 100);
               return (
                 <div key={p.phase} className="p-4 rounded-xl bg-slate-50">
-                  <div className="text-[10px] uppercase tracking-widest text-slate-400 font-bold">{p.phase}</div>
+                  <div className="text-[10px] uppercase tracking-widest text-slate-400 font-bold">
+                    {p.phase}
+                  </div>
                   <div className="mt-1 font-display text-2xl font-bold">{p.count}</div>
                   <div className="mt-3 h-1.5 bg-white rounded-full overflow-hidden">
                     <div className={"h-full " + p.color} style={{ width: `${pct}%` }} />
@@ -221,7 +302,17 @@ function Painel() {
   );
 }
 
-function Kpi({ label, value, icon, tone }: { label: string; value: string; icon: React.ReactNode; tone: string }) {
+function Kpi({
+  label,
+  value,
+  icon,
+  tone,
+}: {
+  label: string;
+  value: string;
+  icon: React.ReactNode;
+  tone: string;
+}) {
   const tones: Record<string, string> = {
     blue: "text-gov-blue bg-gov-blue/10",
     emerald: "text-emerald-600 bg-emerald-50",
@@ -296,7 +387,9 @@ function Panel({
           {items.map((it) => (
             <li key={it.t} className="text-sm">
               <div className="font-medium text-slate-800">{it.t}</div>
-              <div className="text-[11px] uppercase tracking-wide text-slate-400 mt-0.5">{it.s}</div>
+              <div className="text-[11px] uppercase tracking-wide text-slate-400 mt-0.5">
+                {it.s}
+              </div>
             </li>
           ))}
         </ul>

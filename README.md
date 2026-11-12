@@ -33,13 +33,13 @@ Governança, dados estruturados, gestão de riscos e aprendizado institucional p
 
 A Administração Pública celebra milhares de acordos, convênios, termos de cooperação e outros instrumentos de parceria para viabilizar políticas públicas. A gestão dessas relações, porém, ainda depende de controles dispersos, processos manuais e conhecimento fragmentado.
 
-| Desafio | O que acontece hoje |
-|---|---|
-| **Informações dispersas** | Dados de instrumentos espalhados em planilhas, e-mails, processos e sistemas paralelos, sem integração. |
-| **Controles manuais** | Acompanhamento dependente de rotinas pontuais, sem padronização nem trilhas de auditoria nativas. |
-| **Baixa rastreabilidade** | Dificuldade de reconstituir decisões, vigências, repasses e responsáveis ao longo do ciclo de vida. |
-| **Dificuldade de monitoramento** | Sem visão consolidada de riscos, conformidade e desempenho dos instrumentos em execução. |
-| **Perda de conhecimento** | A saída de servidores leva embora o contexto, o raciocínio e os aprendizados que sustentavam a gestão. |
+| Desafio                          | O que acontece hoje                                                                                     |
+| -------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| **Informações dispersas**        | Dados de instrumentos espalhados em planilhas, e-mails, processos e sistemas paralelos, sem integração. |
+| **Controles manuais**            | Acompanhamento dependente de rotinas pontuais, sem padronização nem trilhas de auditoria nativas.       |
+| **Baixa rastreabilidade**        | Dificuldade de reconstituir decisões, vigências, repasses e responsáveis ao longo do ciclo de vida.     |
+| **Dificuldade de monitoramento** | Sem visão consolidada de riscos, conformidade e desempenho dos instrumentos em execução.                |
+| **Perda de conhecimento**        | A saída de servidores leva embora o contexto, o raciocínio e os aprendizados que sustentavam a gestão.  |
 
 ## Como a plataforma ajuda
 
@@ -53,14 +53,14 @@ flowchart LR
 
 Cada instrumento percorre cinco fases padronizadas, com marcos, evidências e responsáveis definidos. Sobre esse ciclo, a plataforma organiza seis pilares:
 
-| Pilar | O que entrega |
-|---|---|
-| 🏛️ **Governança** | Padronização do ciclo de vida, com fases, marcos, papéis e normativos de referência. |
-| 🗂️ **Dados estruturados** | Cadastro único de instrumentos, parceiros e vigências, com qualidade auditável. |
-| 🛡️ **Gestão de riscos** | Indicadores de risco e integridade que orientam o acompanhamento, sem ranqueamento punitivo. |
-| 📚 **Aprendizado institucional** | Lições aprendidas, boas práticas e memória organizacional preservadas e reutilizáveis. |
-| 🔎 **Transparência** | Trilhas auditáveis e evidências acessíveis ao controle e à sociedade. |
-| 🤖 **IA responsável** | IA como apoio à governança e à decisão, nunca como substituta do julgamento humano. |
+| Pilar                            | O que entrega                                                                                |
+| -------------------------------- | -------------------------------------------------------------------------------------------- |
+| 🏛️ **Governança**                | Padronização do ciclo de vida, com fases, marcos, papéis e normativos de referência.         |
+| 🗂️ **Dados estruturados**        | Cadastro único de instrumentos, parceiros e vigências, com qualidade auditável.              |
+| 🛡️ **Gestão de riscos**          | Indicadores de risco e integridade que orientam o acompanhamento, sem ranqueamento punitivo. |
+| 📚 **Aprendizado institucional** | Lições aprendidas, boas práticas e memória organizacional preservadas e reutilizáveis.       |
+| 🔎 **Transparência**             | Trilhas auditáveis e evidências acessíveis ao controle e à sociedade.                        |
+| 🤖 **IA responsável**            | IA como apoio à governança e à decisão, nunca como substituta do julgamento humano.          |
 
 **Valor para o Estado:** eficiência (menos retrabalho), transparência, continuidade administrativa apesar da rotatividade de equipes e fortalecimento da capacidade institucional.
 
@@ -68,47 +68,47 @@ Cada instrumento percorre cinco fases padronizadas, com marcos, evidências e re
 
 ## Telas
 
-| Painel Executivo | Assistente Ideobaldo |
-|---|---|
+| Painel Executivo                            | Assistente Ideobaldo                               |
+| ------------------------------------------- | -------------------------------------------------- |
 | ![Painel Executivo](docs/assets/painel.png) | ![Assistente Ideobaldo](docs/assets/ideobaldo.png) |
 
-| Módulo | Rota | O que mostra |
-|---|---|---|
-| Página inicial | `/` | Proposta, pilares e arquitetura conceitual |
-| Por que existe | `/por-que` | O problema público e o que muda com a plataforma |
-| Painel Executivo | `/painel` | Indicadores, alertas e instrumentos prioritários |
-| Governança | `/governanca` | Metodologia, ciclo de vida, papéis e normativos |
-| Instrumentos | `/instrumentos` | Cadastro único de instrumentos de cooperação |
-| Parceiros | `/parceiros` | Integridade, certidões e histórico sancionador |
-| Motor de Risco | `/risco` | Priorização de acompanhamento por indicadores de risco |
-| Auditoria Inteligente | `/auditoria` | Inconsistências e situações que pedem atenção |
-| Monitoramento | `/monitoramento` | Fiscalizações, evidências e medidas corretivas |
-| Inteligência Institucional | `/inteligencia` | Lições aprendidas, boas práticas e casos |
-| Valor Público | `/valor-publico` | Benefícios e indicadores de resultado |
-| Ideobaldo | `/ideobaldo` | Assistente virtual de governança |
-| Implementação | `/implementacao` | Roadmap em seis fases |
+| Módulo                     | Rota             | O que mostra                                           |
+| -------------------------- | ---------------- | ------------------------------------------------------ |
+| Página inicial             | `/`              | Proposta, pilares e arquitetura conceitual             |
+| Por que existe             | `/por-que`       | O problema público e o que muda com a plataforma       |
+| Painel Executivo           | `/painel`        | Indicadores, alertas e instrumentos prioritários       |
+| Governança                 | `/governanca`    | Metodologia, ciclo de vida, papéis e normativos        |
+| Instrumentos               | `/instrumentos`  | Cadastro único de instrumentos de cooperação           |
+| Parceiros                  | `/parceiros`     | Integridade, certidões e histórico sancionador         |
+| Motor de Risco             | `/risco`         | Priorização de acompanhamento por indicadores de risco |
+| Auditoria Inteligente      | `/auditoria`     | Inconsistências e situações que pedem atenção          |
+| Monitoramento              | `/monitoramento` | Fiscalizações, evidências e medidas corretivas         |
+| Inteligência Institucional | `/inteligencia`  | Lições aprendidas, boas práticas e casos               |
+| Valor Público              | `/valor-publico` | Benefícios e indicadores de resultado                  |
+| Ideobaldo                  | `/ideobaldo`     | Assistente virtual de governança                       |
+| Implementação              | `/implementacao` | Roadmap em seis fases                                  |
 
 ## Estágio atual (v0.1.0, alfa)
 
-| Parte | Situação |
-|---|---|
-| Navegação, layout e conteúdo institucional | ✅ Pronto |
-| Painéis, risco, auditoria, monitoramento | 🎨 Protótipo visual com dados ilustrativos |
-| Cadastro, busca e filtros de instrumentos | 🎨 Interface pronta, ações a implementar |
-| Ideobaldo (assistente) | 💬 Chat funcional na tela, modelo de IA a conectar |
-| Banco de dados | 🔜 Próxima etapa |
-| Login e perfis de acesso | 🔜 Próxima etapa |
+| Parte                                      | Situação                                           |
+| ------------------------------------------ | -------------------------------------------------- |
+| Navegação, layout e conteúdo institucional | ✅ Pronto                                          |
+| Painéis, risco, auditoria, monitoramento   | 🎨 Protótipo visual com dados ilustrativos         |
+| Cadastro, busca e filtros de instrumentos  | 🎨 Interface pronta, ações a implementar           |
+| Ideobaldo (assistente)                     | 💬 Chat funcional na tela, modelo de IA a conectar |
+| Banco de dados                             | 🔜 Próxima etapa                                   |
+| Login e perfis de acesso                   | 🔜 Próxima etapa                                   |
 
 ## Stack
 
-| Camada | Tecnologia |
-|---|---|
-| Interface | [React 19](https://react.dev), [Tailwind CSS 4](https://tailwindcss.com), [shadcn/ui](https://ui.shadcn.com) + Radix UI, ícones [Lucide](https://lucide.dev) |
-| Framework | [TanStack Start](https://tanstack.com/start) (renderização no servidor) + TanStack Router (rotas por arquivo) |
-| Linguagem | TypeScript (modo estrito) |
-| Build | [Vite 7](https://vite.dev), servidor [Nitro](https://nitro.build) |
-| Desenvolvimento e hospedagem | [Lovable](https://lovable.dev), com publicação em [parceriainteligente.lovable.app](https://parceriainteligente.lovable.app) |
-| Qualidade | ESLint + Prettier |
+| Camada                       | Tecnologia                                                                                                                                                   |
+| ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Interface                    | [React 19](https://react.dev), [Tailwind CSS 4](https://tailwindcss.com), [shadcn/ui](https://ui.shadcn.com) + Radix UI, ícones [Lucide](https://lucide.dev) |
+| Framework                    | [TanStack Start](https://tanstack.com/start) (renderização no servidor) + TanStack Router (rotas por arquivo)                                                |
+| Linguagem                    | TypeScript (modo estrito)                                                                                                                                    |
+| Build                        | [Vite 7](https://vite.dev), servidor [Nitro](https://nitro.build)                                                                                            |
+| Desenvolvimento e hospedagem | [Lovable](https://lovable.dev), com publicação em [parceriainteligente.lovable.app](https://parceriainteligente.lovable.app)                                 |
+| Qualidade                    | ESLint + Prettier                                                                                                                                            |
 
 ## Como rodar localmente
 
@@ -123,13 +123,13 @@ npm run dev
 
 Com Bun, use `bun install` e `bun run dev`. Não é preciso configurar variáveis de ambiente nesta versão.
 
-| Comando | O que faz |
-|---|---|
-| `npm run dev` | Sobe o ambiente de desenvolvimento |
-| `npm run build` | Gera a versão de produção |
+| Comando           | O que faz                             |
+| ----------------- | ------------------------------------- |
+| `npm run dev`     | Sobe o ambiente de desenvolvimento    |
+| `npm run build`   | Gera a versão de produção             |
 | `npm run preview` | Serve localmente a versão de produção |
-| `npm run lint` | Verifica o código com ESLint |
-| `npm run format` | Formata o código com Prettier |
+| `npm run lint`    | Verifica o código com ESLint          |
+| `npm run format`  | Formata o código com Prettier         |
 
 ## Estrutura do projeto
 

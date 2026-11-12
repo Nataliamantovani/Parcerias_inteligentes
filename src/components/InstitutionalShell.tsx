@@ -112,7 +112,12 @@ export function TopNav({ variant = "institutional" }: { variant?: "institutional
             PNGI
           </div>
           <div className="leading-tight">
-            <div className={"text-[10px] font-semibold uppercase tracking-widest " + (onDark ? "text-white/60" : "text-slate-400")}>
+            <div
+              className={
+                "text-[10px] font-semibold uppercase tracking-widest " +
+                (onDark ? "text-white/60" : "text-slate-400")
+              }
+            >
               Governo Digital · República Federativa do Brasil
             </div>
             <div className="font-display text-sm font-bold tracking-tight">
@@ -192,21 +197,26 @@ export function InstitutionalShell({ children }: { children: ReactNode }) {
       <footer className="border-t border-white/10 mt-24">
         <div className="mx-auto max-w-[1400px] px-6 py-10 grid md:grid-cols-3 gap-8 text-xs text-white/60">
           <div>
-            <div className="text-white font-display font-bold mb-2">Plataforma Nacional de Governança Inteligente</div>
+            <div className="text-white font-display font-bold mb-2">
+              Plataforma Nacional de Governança Inteligente
+            </div>
             <p className="leading-relaxed">
-              Infraestrutura digital reutilizável para a gestão de acordos, convênios e parcerias na Administração Pública Brasileira.
+              Infraestrutura digital reutilizável para a gestão de acordos, convênios e parcerias na
+              Administração Pública Brasileira.
             </p>
           </div>
           <div>
             <div className="text-white font-semibold mb-2">Caso Piloto</div>
             <p className="leading-relaxed">
-              SIGACT IA — Sistema Inteligente de Governança de Acordos de Cooperação Técnica · Instituto Nacional do Seguro Social (INSS).
+              SIGACT IA — Sistema Inteligente de Governança de Acordos de Cooperação Técnica ·
+              Instituto Nacional do Seguro Social (INSS).
             </p>
           </div>
           <div>
             <div className="text-white font-semibold mb-2">Conformidade</div>
             <p className="leading-relaxed">
-              Aderente ao Decreto 11.531/2023, LGPD, Lei 13.019/2014 e diretrizes da Estratégia Federal de Governo Digital.
+              Aderente ao Decreto 11.531/2023, LGPD, Lei 13.019/2014 e diretrizes da Estratégia
+              Federal de Governo Digital.
             </p>
           </div>
         </div>
