@@ -23,6 +23,7 @@ export const navGroups: NavGroup[] = [
     items: [
       { label: "Cadastro Único", to: "/instrumentos" },
       { label: "Parceiros", to: "/parceiros" },
+      { label: "Habilitação e Regularidade", to: "/habilitacao" },
       { label: "Instrumentos", to: "/instrumentos" },
       { label: "Vigências", to: "/instrumentos" },
     ],
