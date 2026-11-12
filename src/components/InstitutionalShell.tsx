@@ -1,6 +1,7 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import type { ReactNode } from "react";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, LogIn, UserRound } from "lucide-react";
+import { useSessao } from "@/lib/auth/sessao";
 import { useState } from "react";
 
 type NavItem = { label: string; to: string; hash?: string };
@@ -174,10 +175,12 @@ export function TopNav({ variant = "institutional" }: { variant?: "institutional
           })}
         </div>
 
+        <IndicadorSessao onDark={onDark} />
+
         <Link
           to="/painel"
           className={
-            "ml-auto xl:ml-2 hidden md:inline-flex items-center px-3 py-2 rounded-md text-xs font-semibold transition-colors " +
+            "xl:ml-2 hidden md:inline-flex items-center px-3 py-2 rounded-md text-xs font-semibold transition-colors " +
             (onDark
               ? "bg-white text-gov-navy hover:bg-slate-100"
               : "bg-gov-navy text-white hover:bg-slate-800")
@@ -187,6 +190,29 @@ export function TopNav({ variant = "institutional" }: { variant?: "institutional
         </Link>
       </div>
     </nav>
+  );
+}
+
+function IndicadorSessao({ onDark }: { onDark: boolean }) {
+  const { carregando, sessao, cadastro } = useSessao();
+  const base =
+    "ml-auto xl:ml-2 hidden md:inline-flex items-center gap-1.5 px-3 py-2 rounded-md text-xs font-semibold transition-colors " +
+    (onDark
+      ? "text-white/80 hover:text-white hover:bg-white/5"
+      : "text-slate-600 hover:bg-slate-100");
+  // Enquanto lê a sessão (e no servidor), reserva o espaço sem conteúdo para não piscar.
+  if (carregando) return <span className={base + " invisible"}>Entrar</span>;
+  if (!sessao)
+    return (
+      <Link to="/entrar" className={base}>
+        <LogIn className="size-3.5" /> Entrar
+      </Link>
+    );
+  return (
+    <Link to="/conta" className={base} title="Minha conta">
+      <UserRound className="size-3.5" />
+      {cadastro ? cadastro.nome.split(" ")[0] : "Conta sem cadastro"}
+    </Link>
   );
 }
 

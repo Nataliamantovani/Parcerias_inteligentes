@@ -12,6 +12,8 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AssistenteRouteImport } from './routes/assistente'
 import { Route as AuditoriaRouteImport } from './routes/auditoria'
+import { Route as ContaRouteImport } from './routes/conta'
+import { Route as EntrarRouteImport } from './routes/entrar'
 import { Route as GovernancaRouteImport } from './routes/governanca'
 import { Route as HabilitacaoRouteImport } from './routes/habilitacao'
 import { Route as IdeobaldoRouteImport } from './routes/ideobaldo'
@@ -38,6 +40,16 @@ const AssistenteRoute = AssistenteRouteImport.update({
 const AuditoriaRoute = AuditoriaRouteImport.update({
   id: '/auditoria',
   path: '/auditoria',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContaRoute = ContaRouteImport.update({
+  id: '/conta',
+  path: '/conta',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EntrarRoute = EntrarRouteImport.update({
+  id: '/entrar',
+  path: '/entrar',
   getParentRoute: () => rootRouteImport,
 } as any)
 const GovernancaRoute = GovernancaRouteImport.update({
@@ -105,6 +117,8 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/assistente': typeof AssistenteRoute
   '/auditoria': typeof AuditoriaRoute
+  '/conta': typeof ContaRoute
+  '/entrar': typeof EntrarRoute
   '/governanca': typeof GovernancaRoute
   '/habilitacao': typeof HabilitacaoRoute
   '/ideobaldo': typeof IdeobaldoRoute
@@ -122,6 +136,8 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/assistente': typeof AssistenteRoute
   '/auditoria': typeof AuditoriaRoute
+  '/conta': typeof ContaRoute
+  '/entrar': typeof EntrarRoute
   '/governanca': typeof GovernancaRoute
   '/habilitacao': typeof HabilitacaoRoute
   '/ideobaldo': typeof IdeobaldoRoute
@@ -140,6 +156,8 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/assistente': typeof AssistenteRoute
   '/auditoria': typeof AuditoriaRoute
+  '/conta': typeof ContaRoute
+  '/entrar': typeof EntrarRoute
   '/governanca': typeof GovernancaRoute
   '/habilitacao': typeof HabilitacaoRoute
   '/ideobaldo': typeof IdeobaldoRoute
@@ -159,6 +177,8 @@ export interface FileRouteTypes {
     | '/'
     | '/assistente'
     | '/auditoria'
+    | '/conta'
+    | '/entrar'
     | '/governanca'
     | '/habilitacao'
     | '/ideobaldo'
@@ -176,6 +196,8 @@ export interface FileRouteTypes {
     | '/'
     | '/assistente'
     | '/auditoria'
+    | '/conta'
+    | '/entrar'
     | '/governanca'
     | '/habilitacao'
     | '/ideobaldo'
@@ -193,6 +215,8 @@ export interface FileRouteTypes {
     | '/'
     | '/assistente'
     | '/auditoria'
+    | '/conta'
+    | '/entrar'
     | '/governanca'
     | '/habilitacao'
     | '/ideobaldo'
@@ -211,6 +235,8 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AssistenteRoute: typeof AssistenteRoute
   AuditoriaRoute: typeof AuditoriaRoute
+  ContaRoute: typeof ContaRoute
+  EntrarRoute: typeof EntrarRoute
   GovernancaRoute: typeof GovernancaRoute
   HabilitacaoRoute: typeof HabilitacaoRoute
   IdeobaldoRoute: typeof IdeobaldoRoute
@@ -246,6 +272,20 @@ declare module '@tanstack/react-router' {
       path: '/auditoria'
       fullPath: '/auditoria'
       preLoaderRoute: typeof AuditoriaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/conta': {
+      id: '/conta'
+      path: '/conta'
+      fullPath: '/conta'
+      preLoaderRoute: typeof ContaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/entrar': {
+      id: '/entrar'
+      path: '/entrar'
+      fullPath: '/entrar'
+      preLoaderRoute: typeof EntrarRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/governanca': {
@@ -339,6 +379,8 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AssistenteRoute: AssistenteRoute,
   AuditoriaRoute: AuditoriaRoute,
+  ContaRoute: ContaRoute,
+  EntrarRoute: EntrarRoute,
   GovernancaRoute: GovernancaRoute,
   HabilitacaoRoute: HabilitacaoRoute,
   IdeobaldoRoute: IdeobaldoRoute,

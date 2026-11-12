@@ -2,7 +2,9 @@
 
 O banco é **PostgreSQL**, com as regras de permissão **dentro do próprio banco** (Row Level Security). Na fase de protótipo ele roda no Supabase, região São Paulo, **somente com dados fictícios**. Por ser Postgres padrão, pode migrar depois para a infraestrutura do órgão.
 
-- Migração: `supabase/migrations/20261112150000_fundacao.sql`
+- Migrações, aplicadas em ordem:
+  1. `supabase/migrations/20261112150000_fundacao.sql`
+  2. `supabase/migrations/20261112160000_somente_usuarios_cadastrados.sql`
 - Testes das permissões: `supabase/tests/permissoes.test.ts`. São 26 testes, que rodam num Postgres local a cada proposta de mudança.
 
 ## O que existe
@@ -21,6 +23,7 @@ O banco é **PostgreSQL**, com as regras de permissão **dentro do próprio banc
 ## Regras garantidas (cada uma tem teste)
 
 - Usuário **não autenticado** não lê nada.
+- Estar logado **não basta**: sem cadastro **ativo** em `usuario`, o banco não devolve nenhum dado. Para bloquear um servidor desligado, basta marcar `ativo = false`.
 - **Banco único:** todos os órgãos leem parceiros e instrumentos não restritos.
 - Quem cadastra um instrumento fica **designado para a formalização** automaticamente, e só pode cadastrar no **próprio órgão**.
 - **Formalização** edita até a celebração e marca como celebrado, o que exige a data de celebração. Depois disso, não altera mais.
@@ -56,6 +59,13 @@ Pronto: você é a administradora da plataforma no protótipo.
 
 **Nunca** copie para o chat, para o código ou para o GitHub a senha do banco nem a chave `service_role`.
 
+## Login no aplicativo
+
+- Tela **/entrar**, com e-mail e senha pelo Supabase Auth, e tela **/conta**, que mostra órgão e perfil.
+- No menu superior aparece **Entrar** ou o nome da pessoa conectada.
+- O endereço e a chave **publishable** do projeto ficam em `src/lib/supabase/cliente.ts`. São públicos por natureza. Para outro projeto, use `VITE_SUPABASE_URL` e `VITE_SUPABASE_PUBLISHABLE_KEY`.
+- **Desative o cadastro aberto no Supabase:** Authentication → Sign In / Providers → desligue **"Allow new users to sign up"**. Os usuários são criados só pela administração.
+
 ## Próximo passo
 
-Login no aplicativo com o Supabase Auth: e-mail no protótipo, gov.br na fase institucional. Depois, a gravação do módulo Habilitação no banco, o histórico de consultas e o dossiê em PDF.
+Ligar o módulo Habilitação ao banco: gravação do módulo Habilitação no banco, o histórico de consultas e o dossiê em PDF.

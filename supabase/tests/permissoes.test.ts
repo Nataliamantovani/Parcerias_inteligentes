@@ -83,6 +83,27 @@ beforeAll(async () => {
   `);
 });
 
+describe("Conta sem cadastro de servidor", () => {
+  it("autenticado mas sem cadastro em public.usuario não lê nada", async () => {
+    const intruso = "00000000-0000-4000-8000-0000000000ff";
+    await como(intruso, async () => {
+      expect((await db.query("select id from public.parceiro")).rows.length).toBe(0);
+      expect((await db.query("select id from public.usuario")).rows.length).toBe(0);
+      expect((await db.query("select id from public.orgao")).rows.length).toBe(0);
+    });
+  });
+
+  it("servidor marcado como inativo perde o acesso", async () => {
+    await db.exec(`update public.usuario set ativo = false where id = '${ID.consultaA}'`);
+    const n = await como(
+      ID.consultaA,
+      async () => (await db.query("select id from public.parceiro")).rows.length,
+    );
+    await db.exec(`update public.usuario set ativo = true where id = '${ID.consultaA}'`);
+    expect(n).toBe(0);
+  });
+});
+
 describe("Acesso anônimo", () => {
   it("usuário não autenticado não lê nenhuma tabela", async () => {
     await como(null, async () => {

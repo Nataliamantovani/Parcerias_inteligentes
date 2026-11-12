@@ -8,11 +8,13 @@ O formato segue o [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/) e 
 
 ### Segurança
 
+- Só servidores com cadastro **ativo** em `usuario` acessam dados; uma conta autenticada sem cadastro não lê nada (migração `somente_usuarios_cadastrados`).
 - Atualizado o TanStack Start para 1.168.61, que corrige o XSS refletido nas server functions (GHSA-qx66-fv34-fjm8), e o `seroval` para 1.8.1, que corrige a desserialização insegura (GHSA-mv8w-475r-vwqw, GHSA-p6vx-979v-rg4c). Achado #1 da auditoria de 23/10/2026.
 - Atualizadas as demais dependências dentro das versões compatíveis e o `zod` para a versão 4. O `bun audit` caiu de 76 alertas (4 críticos) para 2 de gravidade baixa ou moderada, apenas em ferramentas de desenvolvimento.
 
 ### Adicionado
 
+- Login com Supabase Auth (telas `/entrar` e `/conta`) e indicador de sessão no menu superior.
 - Fundação do banco de dados (PostgreSQL/Supabase): tabelas de órgãos, usuários, parceiros, instrumentos, designações, verificações, ocorrências e histórico, com as regras do Modelo de Perfis e Permissões v0.2 aplicadas no próprio banco (Row Level Security) e 26 testes de permissão. Ver `docs/banco-de-dados.md`.
 - Módulo **Habilitação e Regularidade dos Parceiros** (etapa 1), em `/habilitacao`: catálogo configurável de requisitos por modalidade, painel de regularidade com sete situações, registro manual identificado como tal e situação de ativação de cada fonte. Integração oficial com a API da CGU (CEIS, CNEP, CEPIM), executada só no servidor e protegida por trava de ativação. As demais fontes ficam estruturadas, aguardando adesão ao Conecta gov.br ou como verificação assistida. Ver `docs/habilitacao.md`.
 - Testes automáticos com Vitest (29 testes), incluídos no CI.
