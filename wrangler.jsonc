@@ -1,7 +1,24 @@
 // Configuração de publicação na Cloudflare (Workers).
-// O build (Nitro) mescla este arquivo ao wrangler.json que ele gera em .output/server.
+//
+// Autossuficiente: o próprio Wrangler compila o site antes de publicar
+// (campo "build"), então a publicação funciona mesmo que o painel da
+// Cloudflare não tenha "Build command" configurado. Vale tanto para
+// `wrangler deploy` (produção) quanto para `wrangler preview` (versões de teste).
+//
 // O nome deve ser igual ao do Worker criado no painel da Cloudflare.
 {
   "name": "parcerias-inteligentes",
-  "compatibility_flags": ["nodejs_compat"]
+  "compatibility_date": "2026-11-09",
+  "compatibility_flags": ["nodejs_compat"],
+  "build": {
+    "command": "bun run build",
+  },
+  "main": ".output/server/index.mjs",
+  "no_bundle": true,
+  "rules": [{ "type": "ESModule", "globs": ["**/*.mjs", "**/*.js"] }],
+  "assets": {
+    "binding": "ASSETS",
+    "directory": ".output/public",
+  },
+  "previews": {},
 }
