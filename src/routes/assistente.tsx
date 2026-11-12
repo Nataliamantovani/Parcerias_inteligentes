@@ -7,7 +7,11 @@ export const Route = createFileRoute("/assistente")({
   head: () => ({
     meta: [
       { title: "Assistente Virtual de Governança — PNGI" },
-      { name: "description", content: "Assistente de IA generativa para dúvidas normativas, sugestões documentais e geração de relatórios." },
+      {
+        name: "description",
+        content:
+          "Assistente de IA generativa para dúvidas normativas, sugestões documentais e geração de relatórios.",
+      },
     ],
   }),
   component: AssistentePage,
@@ -50,9 +54,12 @@ function AssistentePage() {
     <DashboardLayout>
       <header>
         <div className="text-sm font-medium text-gov-blue mb-1">IA Generativa</div>
-        <h2 className="font-display text-3xl font-bold tracking-tight">Assistente Virtual de Governança</h2>
+        <h2 className="font-display text-3xl font-bold tracking-tight">
+          Assistente Virtual de Governança
+        </h2>
         <p className="text-sm text-slate-500 mt-1 max-w-3xl">
-          Apoia gestores com dúvidas normativas, sugestões documentais e geração de relatórios — sempre com rastreabilidade das fontes consultadas.
+          Apoia gestores com dúvidas normativas, sugestões documentais e geração de relatórios —
+          sempre com rastreabilidade das fontes consultadas.
         </p>
       </header>
 
@@ -60,8 +67,12 @@ function AssistentePage() {
         <div className="bg-gov-navy rounded-2xl flex flex-col shadow-xl h-[640px] overflow-hidden">
           <div className="p-4 border-b border-white/10 flex items-center gap-3">
             <div className="size-3 rounded-full bg-emerald-400 animate-pulse" />
-            <span className="text-xs font-bold text-white uppercase tracking-widest">PNGI · IA Generativa</span>
-            <span className="ml-auto text-[10px] font-mono text-slate-400">v2.4 — modo demonstração</span>
+            <span className="text-xs font-bold text-white uppercase tracking-widest">
+              PNGI · IA Generativa
+            </span>
+            <span className="ml-auto text-[10px] font-mono text-slate-400">
+              v2.4 — modo demonstração
+            </span>
           </div>
           <div className="flex-1 p-6 overflow-y-auto space-y-4">
             {messages.map((m, idx) => (
@@ -118,9 +129,12 @@ function AssistentePage() {
             </div>
           </div>
           <div className="p-5 rounded-2xl bg-slate-900 text-white">
-            <div className="text-[10px] uppercase tracking-widest text-slate-400 font-bold mb-2">Rastreabilidade</div>
+            <div className="text-[10px] uppercase tracking-widest text-slate-400 font-bold mb-2">
+              Rastreabilidade
+            </div>
             <p className="text-xs text-slate-300 leading-relaxed">
-              Cada resposta cita normas, documentos e registros do cadastro único utilizados. As interações ficam registradas para fins de auditoria.
+              Cada resposta cita normas, documentos e registros do cadastro único utilizados. As
+              interações ficam registradas para fins de auditoria.
             </p>
           </div>
         </aside>

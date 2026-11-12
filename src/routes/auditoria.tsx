@@ -7,7 +7,11 @@ export const Route = createFileRoute("/auditoria")({
   head: () => ({
     meta: [
       { title: "Auditoria Inteligente — PNGI" },
-      { name: "description", content: "Detecção algorítmica de inconsistências e padrões suspeitos em instrumentos de cooperação." },
+      {
+        name: "description",
+        content:
+          "Detecção algorítmica de inconsistências e padrões suspeitos em instrumentos de cooperação.",
+      },
     ],
   }),
   component: AuditoriaPage,
@@ -20,7 +24,8 @@ function AuditoriaPage() {
         <div className="text-sm font-medium text-gov-blue mb-1">Inteligência Artificial</div>
         <h2 className="font-display text-3xl font-bold tracking-tight">Auditoria Inteligente</h2>
         <p className="text-sm text-slate-500 mt-1 max-w-3xl">
-          Algoritmos detectam inconsistências, padrões suspeitos e sinalizam situações que demandam atenção gerencial — incluindo integridade, conformidade e histórico sancionador.
+          Algoritmos detectam inconsistências, padrões suspeitos e sinalizam situações que demandam
+          atenção gerencial — incluindo integridade, conformidade e histórico sancionador.
         </p>
       </header>
 
@@ -34,12 +39,16 @@ function AuditoriaPage() {
       <div className="bg-white border border-slate-200 rounded-2xl shadow-sm divide-y divide-slate-100">
         {auditFindings.map((f) => (
           <article key={f.id} className="p-6 flex items-start gap-4">
-            <div className={
-              "size-10 shrink-0 rounded-lg grid place-items-center " +
-              (f.severity === "alto" ? "bg-rose-50 text-rose-600" :
-               f.severity === "medio" ? "bg-amber-50 text-amber-600" :
-               "bg-emerald-50 text-emerald-600")
-            }>
+            <div
+              className={
+                "size-10 shrink-0 rounded-lg grid place-items-center " +
+                (f.severity === "alto"
+                  ? "bg-rose-50 text-rose-600"
+                  : f.severity === "medio"
+                    ? "bg-amber-50 text-amber-600"
+                    : "bg-emerald-50 text-emerald-600")
+              }
+            >
               <ScanSearch className="size-5" />
             </div>
             <div className="flex-1 min-w-0">
@@ -54,7 +63,12 @@ function AuditoriaPage() {
                   </div>
                   <h4 className="font-semibold mt-1">{f.description}</h4>
                 </div>
-                <span className={"px-2 py-1 rounded-full text-[10px] font-bold uppercase " + riskBadge(f.severity)}>
+                <span
+                  className={
+                    "px-2 py-1 rounded-full text-[10px] font-bold uppercase " +
+                    riskBadge(f.severity)
+                  }
+                >
                   {f.category}
                 </span>
               </div>
@@ -66,7 +80,9 @@ function AuditoriaPage() {
                   <span className="font-mono">{f.confidence.toFixed(1)}% confiança</span>
                 </div>
                 <span>·</span>
-                <button className="text-gov-blue font-semibold hover:underline">Abrir trilha de auditoria</button>
+                <button className="text-gov-blue font-semibold hover:underline">
+                  Abrir trilha de auditoria
+                </button>
                 <button className="text-slate-500 hover:text-gov-navy">Encaminhar ao gestor</button>
               </div>
             </div>

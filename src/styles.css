@@ -5,13 +5,13 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-  --color-gov-navy: #0F172A;
-  --color-gov-blue: #2563EB;
-  --color-risk-high: #E11D48;
-  --color-risk-mid: #F59E0B;
-  --color-risk-low: #10B981;
-  --font-sans: 'Inter', sans-serif;
-  --font-display: 'Outfit', sans-serif;
+  --color-gov-navy: #0f172a;
+  --color-gov-blue: #2563eb;
+  --color-risk-high: #e11d48;
+  --color-risk-mid: #f59e0b;
+  --color-risk-low: #10b981;
+  --font-sans: "Inter", sans-serif;
+  --font-display: "Outfit", sans-serif;
 }
 
 /*

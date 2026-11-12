@@ -7,7 +7,11 @@ export const Route = createFileRoute("/ideobaldo")({
   head: () => ({
     meta: [
       { title: "Ideobaldo — Assistente Virtual de Governança · PNGI" },
-      { name: "description", content: "Ideobaldo é o assistente virtual especializado em instrumentos de cooperação, legislação, governança, monitoramento e fiscalização." },
+      {
+        name: "description",
+        content:
+          "Ideobaldo é o assistente virtual especializado em instrumentos de cooperação, legislação, governança, monitoramento e fiscalização.",
+      },
     ],
   }),
   component: Page,
@@ -49,10 +53,15 @@ function Page() {
   return (
     <DashboardLayout>
       <header>
-        <div className="text-xs font-bold uppercase tracking-widest text-gov-blue mb-2">IA para Governança · Ideobaldo</div>
-        <h2 className="font-display text-3xl font-bold tracking-tight">Assistente Virtual de Governança</h2>
+        <div className="text-xs font-bold uppercase tracking-widest text-gov-blue mb-2">
+          IA para Governança · Ideobaldo
+        </div>
+        <h2 className="font-display text-3xl font-bold tracking-tight">
+          Assistente Virtual de Governança
+        </h2>
         <p className="text-sm text-slate-500 mt-1 max-w-3xl">
-          Especializado em instrumentos de cooperação, legislação, governança, monitoramento e fiscalização — com rastreabilidade total das fontes.
+          Especializado em instrumentos de cooperação, legislação, governança, monitoramento e
+          fiscalização — com rastreabilidade total das fontes.
         </p>
       </header>
 
@@ -60,8 +69,12 @@ function Page() {
         <div className="bg-gov-navy rounded-2xl flex flex-col shadow-xl h-[640px] overflow-hidden">
           <div className="p-4 border-b border-white/10 flex items-center gap-3">
             <div className="size-3 rounded-full bg-emerald-400 animate-pulse" />
-            <span className="text-xs font-bold text-white uppercase tracking-widest">Ideobaldo · PNGI</span>
-            <span className="ml-auto text-[10px] font-mono text-slate-400">v2.4 — modo demonstração</span>
+            <span className="text-xs font-bold text-white uppercase tracking-widest">
+              Ideobaldo · PNGI
+            </span>
+            <span className="ml-auto text-[10px] font-mono text-slate-400">
+              v2.4 — modo demonstração
+            </span>
           </div>
           <div className="flex-1 p-6 overflow-y-auto space-y-4">
             {messages.map((m, idx) => (
@@ -123,8 +136,15 @@ function Page() {
               <FileText className="size-4 text-gov-blue" /> Relatórios Inteligentes
             </div>
             <div className="space-y-2 text-xs">
-              {["Executivo mensal — alta administração", "Gerencial — vigências críticas Q4", "Operacional — fiscalizações abertas"].map((r) => (
-                <button key={r} className="w-full text-left px-3 py-2 rounded-lg bg-slate-50 hover:bg-slate-100 text-slate-700">
+              {[
+                "Executivo mensal — alta administração",
+                "Gerencial — vigências críticas Q4",
+                "Operacional — fiscalizações abertas",
+              ].map((r) => (
+                <button
+                  key={r}
+                  className="w-full text-left px-3 py-2 rounded-lg bg-slate-50 hover:bg-slate-100 text-slate-700"
+                >
                   {r}
                 </button>
               ))}
@@ -132,12 +152,20 @@ function Page() {
           </div>
 
           <div className="p-5 rounded-2xl bg-slate-900 text-white">
-            <div className="text-[10px] uppercase tracking-widest text-slate-400 font-bold mb-2">Outros recursos de IA</div>
+            <div className="text-[10px] uppercase tracking-widest text-slate-400 font-bold mb-2">
+              Outros recursos de IA
+            </div>
             <div className="space-y-2 text-xs">
-              <Link to="/risco" className="flex items-center gap-2 px-3 py-2 rounded-lg bg-white/5 hover:bg-white/10">
+              <Link
+                to="/risco"
+                className="flex items-center gap-2 px-3 py-2 rounded-lg bg-white/5 hover:bg-white/10"
+              >
                 <Brain className="size-4 text-gov-blue" /> Motor de Risco
               </Link>
-              <Link to="/auditoria" className="flex items-center gap-2 px-3 py-2 rounded-lg bg-white/5 hover:bg-white/10">
+              <Link
+                to="/auditoria"
+                className="flex items-center gap-2 px-3 py-2 rounded-lg bg-white/5 hover:bg-white/10"
+              >
                 <Search className="size-4 text-gov-blue" /> Auditoria Inteligente
               </Link>
             </div>

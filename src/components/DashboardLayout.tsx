@@ -8,7 +8,10 @@ export function DashboardLayout({ children }: { children: ReactNode }) {
   const [openGroups, setOpenGroups] = useState<Record<string, boolean>>(() => {
     const init: Record<string, boolean> = {};
     navGroups.forEach((g) => {
-      init[g.label] = pathname === g.to || pathname.startsWith(g.to + "/") || g.items.some((it) => it.to.split("#")[0] === pathname);
+      init[g.label] =
+        pathname === g.to ||
+        pathname.startsWith(g.to + "/") ||
+        g.items.some((it) => it.to.split("#")[0] === pathname);
     });
     return init;
   });
@@ -35,7 +38,11 @@ export function DashboardLayout({ children }: { children: ReactNode }) {
                     }
                   >
                     <span className="flex items-center gap-2">
-                      {isOpen ? <ChevronDown className="size-3" /> : <ChevronRight className="size-3" />}
+                      {isOpen ? (
+                        <ChevronDown className="size-3" />
+                      ) : (
+                        <ChevronRight className="size-3" />
+                      )}
                       {g.label}
                     </span>
                   </button>
@@ -68,7 +75,9 @@ export function DashboardLayout({ children }: { children: ReactNode }) {
 
           <div className="pt-6 px-1">
             <div className="rounded-xl bg-gov-navy p-4 text-white">
-              <p className="text-[10px] font-bold uppercase tracking-widest text-white/50 mb-2">Governança em operação</p>
+              <p className="text-[10px] font-bold uppercase tracking-widest text-white/50 mb-2">
+                Governança em operação
+              </p>
               <div className="flex items-center gap-2">
                 <div className="size-2 rounded-full bg-emerald-400 animate-pulse" />
                 <span className="text-sm font-semibold">1.248 instrumentos ativos</span>
@@ -76,7 +85,10 @@ export function DashboardLayout({ children }: { children: ReactNode }) {
               <p className="mt-3 text-[11px] text-white/60 leading-relaxed">
                 Dados estruturados, evidências auditáveis e aprendizado institucional contínuo.
               </p>
-              <Link to="/valor-publico" className="mt-3 inline-block text-[11px] font-semibold text-gov-blue hover:underline">
+              <Link
+                to="/valor-publico"
+                className="mt-3 inline-block text-[11px] font-semibold text-gov-blue hover:underline"
+              >
                 Ver valor público gerado →
               </Link>
             </div>

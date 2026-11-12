@@ -184,8 +184,7 @@ export const auditFindings: AuditFinding[] = [
     id: "AUD-2024-0420",
     instrument: "ACT 042/2023",
     category: "Integridade",
-    description:
-      "Parceiro apresenta sanção administrativa não declarada no cadastro único (CEIS).",
+    description: "Parceiro apresenta sanção administrativa não declarada no cadastro único (CEIS).",
     confidence: 92.1,
     severity: "alto",
     detectedAt: "Há 6 horas",
@@ -214,8 +213,7 @@ export const auditFindings: AuditFinding[] = [
     id: "AUD-2024-0402",
     instrument: "ACT 118/2024",
     category: "Conformidade",
-    description:
-      "Marcos contratuais cumpridos. Sugere-se replicar boas práticas para novos ACTs.",
+    description: "Marcos contratuais cumpridos. Sugere-se replicar boas práticas para novos ACTs.",
     confidence: 95.6,
     severity: "baixo",
     detectedAt: "Há 5 dias",
