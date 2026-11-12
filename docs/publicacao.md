@@ -21,3 +21,5 @@ Nenhuma é necessária para o site funcionar. Elas só são usadas pelo módulo 
 ## Site anterior (Lovable)
 
 O projeto "Inteligência em Parcerias" na Lovable continua publicado com a versão de outubro de 2026. Ele não recebe as mudanças deste repositório.
+
+Última verificação da publicação automática: 12/11/2026.
