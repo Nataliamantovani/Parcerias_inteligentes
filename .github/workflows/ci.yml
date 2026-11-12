@@ -1,0 +1,42 @@
+# Verificação automática do Parceria Inteligente (SIGACT IA).
+# Roda a cada proposta de mudança (pull request) e a cada atualização da main.
+# Se algum passo falhar, a proposta fica marcada com um X vermelho no GitHub.
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  verificar:
+    name: Instalar, checar e compilar
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Baixar o código
+        uses: actions/checkout@v4
+
+      - name: Instalar o Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.4.4
+
+      - name: Instalar dependências (exatamente as do bun.lock)
+        run: bun install --frozen-lockfile
+
+      - name: Checar tipos (TypeScript)
+        run: bunx tsc --noEmit
+
+      - name: Checar formatação e boas práticas (lint)
+        run: bun run lint
+
+      - name: Compilar o site
+        run: bun run build
+
+      - name: Auditoria de segurança das dependências de produção
+        # Falha se houver alerta alto ou crítico nas dependências que vão para o site.
+        run: bun audit --prod --audit-level=high

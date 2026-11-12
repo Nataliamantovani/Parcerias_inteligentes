@@ -11,8 +11,13 @@ O formato segue o [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/) e 
 - Atualizado o TanStack Start para 1.168.61, que corrige o XSS refletido nas server functions (GHSA-qx66-fv34-fjm8), e o `seroval` para 1.8.1, que corrige a desserialização insegura (GHSA-mv8w-475r-vwqw, GHSA-p6vx-979v-rg4c). Achado #1 da auditoria de 23/10/2026.
 - Atualizadas as demais dependências dentro das versões compatíveis e o `zod` para a versão 4. O `bun audit` caiu de 76 alertas (4 críticos) para 2 de gravidade baixa ou moderada, apenas em ferramentas de desenvolvimento.
 
+### Adicionado
+
+- Verificação automática (CI) no GitHub Actions. A cada proposta de mudança, ela instala as dependências, checa os tipos, roda o lint, compila o site e audita a segurança das dependências de produção.
+
 ### Alterado
 
+- Código formatado com o Prettier. O lint, que falhava com 292 erros de formatação, agora passa.
 - O `bun.lock` passa a baixar os pacotes do registro público do npm, e não do cache privado da Lovable. Assim o projeto pode ser instalado fora da Lovable.
 - O TanStack Start fica travado na linha 1.168.x, porque a 1.169 exige o Vite 8, que o pacote de configuração da Lovable ainda não suporta.
 
