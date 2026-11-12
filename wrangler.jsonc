@@ -1,0 +1,7 @@
+// Configuração de publicação na Cloudflare (Workers).
+// O build (Nitro) mescla este arquivo ao wrangler.json que ele gera em .output/server.
+// O nome deve ser igual ao do Worker criado no painel da Cloudflare.
+{
+  "name": "parcerias-inteligentes",
+  "compatibility_flags": ["nodejs_compat"]
+}

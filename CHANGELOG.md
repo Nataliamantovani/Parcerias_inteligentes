@@ -14,6 +14,7 @@ O formato segue o [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/) e 
 
 ### Adicionado
 
+- Publicação automática na Cloudflare (Worker `parcerias-inteligentes`) a cada aprovação na `main`. Ver `docs/publicacao.md`.
 - Login com Supabase Auth (telas `/entrar` e `/conta`) e indicador de sessão no menu superior.
 - Fundação do banco de dados (PostgreSQL/Supabase): tabelas de órgãos, usuários, parceiros, instrumentos, designações, verificações, ocorrências e histórico, com as regras do Modelo de Perfis e Permissões v0.2 aplicadas no próprio banco (Row Level Security) e 26 testes de permissão. Ver `docs/banco-de-dados.md`.
 - Módulo **Habilitação e Regularidade dos Parceiros** (etapa 1), em `/habilitacao`: catálogo configurável de requisitos por modalidade, painel de regularidade com sete situações, registro manual identificado como tal e situação de ativação de cada fonte. Integração oficial com a API da CGU (CEIS, CNEP, CEPIM), executada só no servidor e protegida por trava de ativação. As demais fontes ficam estruturadas, aguardando adesão ao Conecta gov.br ou como verificação assistida. Ver `docs/habilitacao.md`.
