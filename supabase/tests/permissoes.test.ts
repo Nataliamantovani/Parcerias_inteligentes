@@ -361,16 +361,62 @@ describe("Nada se apaga e tudo fica no histórico", () => {
     expect(h[0]).toMatchObject({ operacao: "INSERT", por: ID.formA });
   });
 
-  it("histórico: controle lê; consulta não lê; ninguém altera", async () => {
-    const ler = (u: string) =>
-      como(u, async () => (await db.query("select id from public.historico")).rows.length);
-    expect(await ler(ID.consultaA)).toBe(0);
-    expect(await ler(ID.controle)).toBeGreaterThan(0);
+  it("histórico: o órgão que cadastrou lê; outro órgão não; ninguém altera", async () => {
+    const lerInstrumento = (u: string) =>
+      como(
+        u,
+        async () =>
+          (
+            await db.query("select id from public.historico where registro_id = $1", [
+              instrumentoId,
+            ])
+          ).rows.length,
+      );
+    expect(await lerInstrumento(ID.consultaA)).toBeGreaterThan(0);
+    expect(await lerInstrumento(ID.consultaB)).toBe(0);
+    expect(await lerInstrumento(ID.controle)).toBeGreaterThan(0);
     await como(ID.controle, async () => {
       await expect(db.query("update public.historico set operacao = 'X'")).rejects.toThrow(
         /permission denied/,
       );
     });
+  });
+
+  it("histórico de penalidade em apuração não aparece para quem não está designado", async () => {
+    const ler = (u: string) =>
+      como(
+        u,
+        async () =>
+          (await db.query("select id from public.historico where tabela = 'ocorrencia_parceiro'"))
+            .rows.length,
+      );
+    expect(await ler(ID.consultaA)).toBe(0);
+    expect(await ler(ID.gestorA)).toBeGreaterThan(0);
+  });
+
+  it("histórico de instrumento restrito só aparece para designados e Controle", async () => {
+    await como(ID.gestorA, () =>
+      db.query("update public.instrumento set acesso_restrito = true where id = $1", [
+        instrumentoId,
+      ]),
+    );
+    const ler = (u: string) =>
+      como(
+        u,
+        async () =>
+          (
+            await db.query("select id from public.historico where instrumento_id = $1", [
+              instrumentoId,
+            ])
+          ).rows.length,
+      );
+    expect(await ler(ID.consultaA)).toBe(0);
+    expect(await ler(ID.fiscalA)).toBeGreaterThan(0);
+    await como(ID.gestorA, () =>
+      db.query("update public.instrumento set acesso_restrito = false where id = $1", [
+        instrumentoId,
+      ]),
+    );
   });
 });
 

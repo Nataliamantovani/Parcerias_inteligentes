@@ -139,9 +139,11 @@ create table public.ocorrencia_parceiro (
 
 -- Trilha de auditoria: preenchida só por gatilho; ninguém altera nem apaga.
 create table public.historico (
-  id          bigint generated always as identity primary key,
-  tabela      text not null,
-  registro_id uuid not null,
+  id             bigint generated always as identity primary key,
+  tabela         text not null,
+  registro_id    uuid not null,
+  orgao_id       uuid,          -- órgão que cadastrou o registro (define quem lê o histórico)
+  instrumento_id uuid,          -- instrumento relacionado, para respeitar o acesso restrito
   operacao    text not null,
   antes       jsonb,
   depois      jsonb,
@@ -218,11 +220,30 @@ $$;
 -- Auditoria genérica.
 create function app.registrar_historico() returns trigger
 language plpgsql security definer set search_path = public as $$
+declare
+  linha jsonb := to_jsonb(coalesce(new, old));
+  v_instrumento uuid;
+  v_orgao uuid;
 begin
-  insert into public.historico (tabela, registro_id, operacao, antes, depois, por)
+  if tg_table_name = 'orgao' then
+    v_orgao := (linha ->> 'id')::uuid;
+  elsif tg_table_name = 'instrumento' then
+    v_instrumento := (linha ->> 'id')::uuid;
+    v_orgao := (linha ->> 'orgao_id')::uuid;
+  else
+    v_instrumento := (linha ->> 'instrumento_id')::uuid;
+    v_orgao := coalesce(
+      (linha ->> 'orgao_id')::uuid,
+      (select i.orgao_id from public.instrumento i where i.id = v_instrumento)
+    );
+  end if;
+
+  insert into public.historico (tabela, registro_id, orgao_id, instrumento_id, operacao, antes, depois, por)
   values (
     tg_table_name,
     coalesce(new.id, old.id),
+    v_orgao,
+    v_instrumento,
     tg_op,
     case when tg_op = 'INSERT' then null else to_jsonb(old) end,
     case when tg_op = 'DELETE' then null else to_jsonb(new) end,
@@ -423,7 +444,24 @@ create policy ocorrencia_decidir on public.ocorrencia_parceiro for update to aut
   using (app.e_designado(instrumento_id, array['gestor','fiscal']::public.papel_instrumento[]))
   with check (app.e_designado(instrumento_id, array['gestor','fiscal']::public.papel_instrumento[]));
 
--- Histórico: controle e administração da plataforma
+-- Histórico: o órgão que cadastrou o registro (decisão de 12/11/2026), além de
+-- Controle e administração da plataforma. Dentro do órgão, continuam valendo o
+-- acesso restrito e o sigilo das penalidades em apuração.
 create policy historico_ler on public.historico for select to authenticated using (
-  app.e_controle() or app.e_adm_plataforma()
+  app.e_controle()
+  or app.e_adm_plataforma()
+  or (
+    orgao_id = app.meu_orgao()
+    and (
+      instrumento_id is null
+      or not app.instrumento_restrito(instrumento_id)
+      or app.pode_ver_restrito(instrumento_id)
+    )
+    and (
+      tabela <> 'ocorrencia_parceiro'
+      or app.pode_ver_restrito(instrumento_id)
+      or (coalesce(antes ->> 'situacao', '') <> 'em_apuracao'
+          and coalesce(depois ->> 'situacao', '') <> 'em_apuracao')
+    )
+  )
 );

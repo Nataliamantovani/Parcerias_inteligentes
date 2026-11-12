@@ -30,13 +30,13 @@ O banco é **PostgreSQL**, com as regras de permissão **dentro do próprio banc
 - **Penalidade em apuração:** só os designados e o Controle veem. Depois da decisão definitiva, todos os órgãos veem. A descrição não pode ser editada.
 - **Administrador do órgão** designa papéis e cria usuários só no próprio órgão. Ele não cria perfis de Controle nem de administrador da plataforma.
 - **Nada se apaga**, nem pelo administrador da plataforma. Verificações não são alteradas: uma correção é um novo registro.
-- **Histórico** automático de toda alteração, com autor e valores antes e depois. Ninguém o altera.
+- **Histórico** automático de toda alteração, com autor e valores antes e depois. Ninguém o altera. Quem lê é o órgão que cadastrou o registro, respeitando o acesso restrito.
 
-## Interpretações que precisam da sua confirmação
+## Decisões confirmadas em 12/11/2026
 
-1. **Quem cadastra instrumento:** qualquer servidor do órgão pode cadastrar e vira formalização daquele instrumento. A alternativa seria só o administrador do órgão cadastrar e designar.
-2. **Quem lê o histórico completo:** hoje, só Controle e administrador da plataforma.
-3. **Correção do cadastro do parceiro:** hoje, só o administrador da plataforma. No futuro, os dados virão da Receita, via Conecta.
+1. **Quem cadastra instrumento:** qualquer servidor do órgão. Quem cadastrou vira automaticamente a formalização daquele instrumento.
+2. **Quem lê o histórico:** o **órgão que cadastrou** o registro, além de Controle e administrador da plataforma. Dentro do órgão, o histórico de instrumento restrito e de penalidade em apuração continua visível só para os designados.
+3. **Correção do cadastro do parceiro:** só o administrador da plataforma, até os dados virem da Receita.
 
 ## Como aplicar no Supabase (passo a passo)
 
