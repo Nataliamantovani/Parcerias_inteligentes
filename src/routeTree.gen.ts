@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AssistenteRouteImport } from './routes/assistente'
 import { Route as AuditoriaRouteImport } from './routes/auditoria'
 import { Route as GovernancaRouteImport } from './routes/governanca'
+import { Route as HabilitacaoRouteImport } from './routes/habilitacao'
 import { Route as IdeobaldoRouteImport } from './routes/ideobaldo'
 import { Route as ImplementacaoRouteImport } from './routes/implementacao'
 import { Route as InstrumentosRouteImport } from './routes/instrumentos'
@@ -42,6 +43,11 @@ const AuditoriaRoute = AuditoriaRouteImport.update({
 const GovernancaRoute = GovernancaRouteImport.update({
   id: '/governanca',
   path: '/governanca',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HabilitacaoRoute = HabilitacaoRouteImport.update({
+  id: '/habilitacao',
+  path: '/habilitacao',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IdeobaldoRoute = IdeobaldoRouteImport.update({
@@ -100,6 +106,7 @@ export interface FileRoutesByFullPath {
   '/assistente': typeof AssistenteRoute
   '/auditoria': typeof AuditoriaRoute
   '/governanca': typeof GovernancaRoute
+  '/habilitacao': typeof HabilitacaoRoute
   '/ideobaldo': typeof IdeobaldoRoute
   '/implementacao': typeof ImplementacaoRoute
   '/instrumentos': typeof InstrumentosRoute
@@ -116,6 +123,7 @@ export interface FileRoutesByTo {
   '/assistente': typeof AssistenteRoute
   '/auditoria': typeof AuditoriaRoute
   '/governanca': typeof GovernancaRoute
+  '/habilitacao': typeof HabilitacaoRoute
   '/ideobaldo': typeof IdeobaldoRoute
   '/implementacao': typeof ImplementacaoRoute
   '/instrumentos': typeof InstrumentosRoute
@@ -133,6 +141,7 @@ export interface FileRoutesById {
   '/assistente': typeof AssistenteRoute
   '/auditoria': typeof AuditoriaRoute
   '/governanca': typeof GovernancaRoute
+  '/habilitacao': typeof HabilitacaoRoute
   '/ideobaldo': typeof IdeobaldoRoute
   '/implementacao': typeof ImplementacaoRoute
   '/instrumentos': typeof InstrumentosRoute
@@ -151,6 +160,7 @@ export interface FileRouteTypes {
     | '/assistente'
     | '/auditoria'
     | '/governanca'
+    | '/habilitacao'
     | '/ideobaldo'
     | '/implementacao'
     | '/instrumentos'
@@ -167,6 +177,7 @@ export interface FileRouteTypes {
     | '/assistente'
     | '/auditoria'
     | '/governanca'
+    | '/habilitacao'
     | '/ideobaldo'
     | '/implementacao'
     | '/instrumentos'
@@ -183,6 +194,7 @@ export interface FileRouteTypes {
     | '/assistente'
     | '/auditoria'
     | '/governanca'
+    | '/habilitacao'
     | '/ideobaldo'
     | '/implementacao'
     | '/instrumentos'
@@ -200,6 +212,7 @@ export interface RootRouteChildren {
   AssistenteRoute: typeof AssistenteRoute
   AuditoriaRoute: typeof AuditoriaRoute
   GovernancaRoute: typeof GovernancaRoute
+  HabilitacaoRoute: typeof HabilitacaoRoute
   IdeobaldoRoute: typeof IdeobaldoRoute
   ImplementacaoRoute: typeof ImplementacaoRoute
   InstrumentosRoute: typeof InstrumentosRoute
@@ -240,6 +253,13 @@ declare module '@tanstack/react-router' {
       path: '/governanca'
       fullPath: '/governanca'
       preLoaderRoute: typeof GovernancaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/habilitacao': {
+      id: '/habilitacao'
+      path: '/habilitacao'
+      fullPath: '/habilitacao'
+      preLoaderRoute: typeof HabilitacaoRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/ideobaldo': {
@@ -320,6 +340,7 @@ const rootRouteChildren: RootRouteChildren = {
   AssistenteRoute: AssistenteRoute,
   AuditoriaRoute: AuditoriaRoute,
   GovernancaRoute: GovernancaRoute,
+  HabilitacaoRoute: HabilitacaoRoute,
   IdeobaldoRoute: IdeobaldoRoute,
   ImplementacaoRoute: ImplementacaoRoute,
   InstrumentosRoute: InstrumentosRoute,

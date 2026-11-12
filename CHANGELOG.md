@@ -13,6 +13,8 @@ O formato segue o [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/) e 
 
 ### Adicionado
 
+- Módulo **Habilitação e Regularidade dos Parceiros** (etapa 1), em `/habilitacao`: catálogo configurável de requisitos por modalidade, painel de regularidade com sete situações, registro manual identificado como tal e situação de ativação de cada fonte. Integração oficial com a API da CGU (CEIS, CNEP, CEPIM), executada só no servidor e protegida por trava de ativação. As demais fontes ficam estruturadas, aguardando adesão ao Conecta gov.br ou como verificação assistida. Ver `docs/habilitacao.md`.
+- Testes automáticos com Vitest (29 testes), incluídos no CI.
 - Verificação automática (CI) no GitHub Actions. A cada proposta de mudança, ela instala as dependências, checa os tipos, roda o lint, compila o site e audita a segurança das dependências de produção.
 
 ### Alterado

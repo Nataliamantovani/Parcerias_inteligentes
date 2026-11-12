@@ -34,6 +34,9 @@ jobs:
       - name: Checar formatação e boas práticas (lint)
         run: bun run lint
 
+      - name: Testes automáticos
+        run: bun run test
+
       - name: Compilar o site
         run: bun run build
 
